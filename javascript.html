@@ -1,0 +1,123 @@
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elements of Art Quiz</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: skyblue;
+      text-align: center;
+      margin: 20px;
+    }
+
+    .quiz-container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .question {
+      margin-bottom: 20px;
+      color: blue;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .options button {
+      padding: 10px;
+      margin: 5px;
+      cursor: pointer;
+      background-color: yellow;
+      color:blue;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .options button:hover {
+      background-color: skyblue
+color:blue;
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-container">
+  <div class="question" id="question"></div>
+  <div class="options" id="options"></div>
+</div>
+
+<script>
+  // ... (JavaScript code remains the same)
+</script>
+
+</body>
+</html>
+</head>
+<body>
+
+<div class="quiz-container">
+  <div class="question" id="question"></div>
+  <div class="options" id="options"></div>
+</div>
+
+<script>
+  const questions = [
+    { question: "Which element of art refers to the lightness or darkness of a color?", options: ["Color", "Value", "Line", "Texture"], correctAnswer: "Value" },
+    { question: "What is the primary element of art that refers to the path of a moving point?", options: ["Shape", "Color", "Line", "Space"], correctAnswer: "Line" },
+    { question: "Which element of art refers to the surface quality or feel of an object?", options: ["Texture", "Form", "Space", "Value"], correctAnswer: "Texture" },
+    { question: "What is the element of art that describes the emptiness or area between, around, above, below, or within objects?", options: ["Shape", "Space", "Color", "Form"], correctAnswer: "Space" },
+    { question: "Which element of art is derived from reflected light and is described by its name?", options: ["Form", "Value", "Color", "Line"], correctAnswer: "Color" },
+    { question: "What element of art is a two-dimensional shape that is defined by lines and changes in color or value?", options: ["Form", "Line", "Shape", "Texture"], correctAnswer: "Shape" },
+  ];
+
+  let currentQuestionIndex = 0;
+
+  function loadQuestion() {
+    const questionElement = document.getElementById('question');
+    const optionsElement = document.getElementById('options');
+    const currentQuestion = questions[currentQuestionIndex];
+
+    questionElement.textContent = currentQuestion.question;
+
+    optionsElement.innerHTML = '';
+    currentQuestion.options.forEach((option) => {
+      const button = document.createElement('button');
+      button.textContent = option;
+      button.addEventListener('click', () => checkAnswer(option));
+      optionsElement.appendChild(button);
+    });
+  }
+
+  function checkAnswer(userAnswer) {
+    const currentQuestion = questions[currentQuestionIndex];
+
+    if (userAnswer === currentQuestion.correctAnswer) {
+      alert("Correct!");
+    } else {
+      alert("Incorrect! The correct answer is: " + currentQuestion.correctAnswer);
+    }
+
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex < questions.length) {
+      loadQuestion();
+    } else {
+      alert("Quiz completed!");
+      // You can add further actions here when the quiz is completed
+    }
+  }
+
+  // Initial load
+  loadQuestion();
+</script>
+
+</body>
+</html>
